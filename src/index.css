@@ -1,0 +1,238 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Default colors */
+    --background: 210 40% 98%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 196 100% 47%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 196 100% 47%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 196 100% 47%;
+
+    --radius: 0.5rem;
+    
+    /* Travel color variables */
+    --travel-50: 195 100% 95%;
+    --travel-100: 195 100% 85%;
+    --travel-200: 195 100% 75%;
+    --travel-300: 195 100% 65%;
+    --travel-400: 195 100% 55%;
+    --travel-500: 195 100% 45%;
+    --travel-600: 195 100% 35%;
+    --travel-700: 195 100% 25%;
+    --travel-800: 195 100% 15%;
+    --travel-900: 195 100% 5%;
+    
+    /* Mountain color variables */
+    --mountain-50: 215 40% 95%;
+    --mountain-100: 215 40% 85%;
+    --mountain-200: 215 40% 75%;
+    --mountain-300: 215 40% 65%;
+    --mountain-400: 215 40% 55%;
+    --mountain-500: 215 40% 45%;
+    --mountain-600: 215 40% 35%;
+    --mountain-700: 215 40% 25%;
+    --mountain-800: 215 40% 15%;
+    --mountain-900: 215 40% 5%;
+    
+    /* Food color variables */
+    --food-50: 20 100% 95%;
+    --food-100: 20 100% 85%;
+    --food-200: 20 100% 75%;
+    --food-300: 20 100% 65%;
+    --food-400: 20 100% 55%;
+    --food-500: 20 100% 45%;
+    --food-600: 20 100% 35%;
+    --food-700: 20 100% 25%;
+    --food-800: 20 100% 15%;
+    --food-900: 20 100% 5%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 196 100% 47%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 196 100% 37%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 196 100% 47%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  .hero-section {
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url('https://images.unsplash.com/photo-1488085061387-422e29b40080?q=80&w=3131&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+
+  .hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 0;
+  }
+
+  .hero-section > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .category-card {
+    transition: all 0.3s ease;
+  }
+  
+  .category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  }
+
+  /* Default fallback styles for images */
+  img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+  
+  img.error {
+    object-fit: contain;
+    background-color: #f0f0f0;
+  }
+}
+
+@media print {
+  /* Hide non-printable elements */
+  header,
+  footer,
+  .no-print,
+  button {
+    display: none !important;
+  }
+
+  /* Show print-only elements */
+  .print-only {
+    display: block !important;
+  }
+
+  /* Hide screen-only elements */
+  .screen-only {
+    display: none !important;
+  }
+
+  /* Reset background colors and shadows for printing */
+  body {
+    background: white !important;
+  }
+
+  main {
+    padding: 0 !important;
+  }
+
+  /* Ensure content is visible and properly formatted */
+  .container {
+    max-width: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+
+  /* Format cards for printing */
+  .card {
+    box-shadow: none !important;
+    border: 1px solid #ddd !important;
+    break-inside: avoid;
+    margin-bottom: 20px !important;
+  }
+
+  /* Ensure text is readable */
+  * {
+    color: black !important;
+    text-shadow: none !important;
+    box-shadow: none !important;
+  }
+
+  /* Add page breaks between days */
+  .page-break {
+    page-break-before: always;
+    margin-top: 20px;
+  }
+
+  /* Style the print header */
+  h1 {
+    font-size: 24pt !important;
+    margin-bottom: 10px !important;
+  }
+
+  /* Ensure activities are clearly separated */
+  .activity {
+    border-bottom: 1px solid #eee !important;
+    padding: 10px 0 !important;
+  }
+
+  /* Remove background colors and make text dark */
+  [class*="bg-"] {
+    background-color: transparent !important;
+  }
+
+  /* Ensure proper spacing */
+  .mb-8 {
+    margin-bottom: 20px !important;
+  }
+}
